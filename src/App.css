@@ -5,3 +5,7 @@
 .gender {
   text-transform: capitalize;
 }
+
+.auto-complete {
+  width: 100%;
+}

@@ -27,7 +27,7 @@ function App() {
     setTypingTimeout(() =>
       setTimeout(() => {
         setFilteredData(() =>
-          productData.filter(({ title = "" }) => {
+          productData.filter(({ title }) => {
             const nakedTitle = title.replace(/[^a-zA-Z]/g, "").toLowerCase();
             const nakedSearchValue = value
               .replace(/[^a-zA-Z]/g, "")
@@ -35,7 +35,7 @@ function App() {
             return nakedTitle.includes(nakedSearchValue);
           })
         );
-      }, 500)
+      }, 800)
     );
   };
 
@@ -71,6 +71,7 @@ function App() {
       <SearchInput
         searchText={searchText}
         handleSearchText={handleSearchText}
+        filteredData={filteredData}
       />
       <TableInput productData={!searchText ? productData : filteredData} />
     </div>

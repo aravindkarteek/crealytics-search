@@ -7,7 +7,7 @@ const TitleWithImage = ({ text, row, isLink = false, handleProductClick }) => {
   return (
     <div className="d-flex align-items-center">
       <Avatar
-        className="product-img"
+        className="product-thumbnail"
         src={row.imageLink}
         alt="No Image"
         size="large"

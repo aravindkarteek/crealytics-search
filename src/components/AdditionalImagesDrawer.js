@@ -36,7 +36,9 @@ const AdditionalImagesDrawer = ({ visible, onClose, productDetails }) => {
         {discount > 0 ? (
           <Paragraph className="d-flex justify-content-between">
             <Text strong>Discount:</Text>
-            <Text className="ms-3">{discount} %</Text>
+            <Text type="success" strong className="ms-3">
+              {discount} %
+            </Text>
           </Paragraph>
         ) : null}
       </div>

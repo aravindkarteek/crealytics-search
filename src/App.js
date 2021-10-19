@@ -13,18 +13,19 @@ function App() {
   const [productData, setProductData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const [typingTimeout, setTypingTimeout] = useState(null);
+  const [typingTimer, setTypingTimer] = useState(null);
 
   useEffect(() => {
     parseData();
   }, []);
 
   const handleSearchText = (value) => {
-    if (typingTimeout) {
-      clearTimeout(typingTimeout);
+    if (typingTimer) {
+      clearTimeout(typingTimer);
+      setTypingTimer(null);
     }
     setSearchText(value);
-    setTypingTimeout(() =>
+    setTypingTimer(() =>
       setTimeout(() => {
         setFilteredData(() =>
           productData.filter(({ title }) => {
@@ -35,7 +36,7 @@ function App() {
             return nakedTitle.includes(nakedSearchValue);
           })
         );
-      }, 800)
+      }, 600)
     );
   };
 

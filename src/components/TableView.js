@@ -10,7 +10,7 @@ const TableView = ({ productData }) => {
 
   const handleProductClick = (rowData) => {
     setShowAdditionalImages(true);
-    setProductToView(rowData);
+    setProductToView({ ...rowData });
   };
 
   const columns = [
@@ -26,6 +26,18 @@ const TableView = ({ productData }) => {
           handleProductClick={handleProductClick}
         />
       ),
+      filters: [
+        { text: "On Discount", value: "onDiscount" },
+        { text: "No Discount", value: "noDiscount" },
+      ],
+      onFilter: (value, record) => {
+        if (value === "onDiscount") {
+          return record.salePrice < record.price;
+        }
+        if (value === "noDiscount") {
+          return record.salePrice >= record.price;
+        }
+      },
     },
     {
       title: "Gtin",
@@ -37,12 +49,12 @@ const TableView = ({ productData }) => {
       dataIndex: "gender",
       key: "gender",
       className: "gender",
-      filterMultiple: true,
       filters: [
         { text: "Male", value: "male" },
         { text: "Female", value: "female" },
         { text: "Unisex", value: "unisex" },
       ],
+      onFilter: (value, record) => record.gender.indexOf(value) === 0,
     },
     {
       title: "Price",
@@ -68,7 +80,6 @@ const TableView = ({ productData }) => {
   return (
     <>
       <Table
-        key="product-table"
         className="mt-5"
         columns={columns}
         dataSource={productData}

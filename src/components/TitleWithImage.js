@@ -1,14 +1,15 @@
 import React from "react";
-import { Avatar, Button, Typography } from "antd";
+import { Avatar, Button, Typography, Tag } from "antd";
 
 const { Title } = Typography;
 
 const TitleWithImage = ({ text, row, isLink = false, handleProductClick }) => {
+  const { imageLink, price, salePrice } = row;
   return (
     <div className="d-flex align-items-center">
       <Avatar
         className="product-thumbnail"
-        src={row.imageLink}
+        src={imageLink}
         alt="No Image"
         size="large"
       />
@@ -21,10 +22,15 @@ const TitleWithImage = ({ text, row, isLink = false, handleProductClick }) => {
           {text}
         </Button>
       ) : (
-        <Title level={5} className="ms-3">
+        <Title copyable level={5} className="ms-3">
           {text}
         </Title>
       )}
+      {salePrice < price ? (
+        <Tag className={!isLink ? "ms-3" : ""} color="green">
+          On Discount
+        </Tag>
+      ) : null}
     </div>
   );
 };

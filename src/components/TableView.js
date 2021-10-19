@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Table } from "antd";
-import { addEuroSymbol } from "../utils/utils";
+import { addEuroSymbol, pagination } from "../utils/utils";
 import AdditionalImagesDrawer from "./AdditionalImagesDrawer";
 import TitleWithImage from "./TitleWithImage";
 
-const TableView = ({ productData }) => {
-  const [showAdditionalImages, setShowAdditionalImages] = useState(false);
-  const [productToView, setProductToView] = useState({});
-
-  const handleProductClick = (rowData) => {
-    setShowAdditionalImages(true);
-    setProductToView({ ...rowData });
-  };
-
+const TableView = ({
+  productData,
+  productToView,
+  showAdditionalImages,
+  setShowAdditionalImages,
+  handleProductClick,
+}) => {
   const columns = [
     {
       title: "Title",
@@ -73,14 +71,10 @@ const TableView = ({ productData }) => {
     },
   ];
 
-  const pagination = {
-    defaultPageSize: 100,
-  };
-
   return (
     <>
       <Table
-        className="mt-5"
+        className="desktop-view mt-5"
         columns={columns}
         dataSource={productData}
         pagination={pagination}
@@ -89,6 +83,7 @@ const TableView = ({ productData }) => {
         visible={showAdditionalImages}
         onClose={() => setShowAdditionalImages(false)}
         productDetails={productToView}
+        width="50vw"
       />
     </>
   );

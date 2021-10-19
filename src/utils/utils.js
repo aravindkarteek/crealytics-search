@@ -5,3 +5,8 @@ export const addEuroSymbol = (text) => {
 export const parseImageLinks = (additionalLinks) => {
   return additionalLinks.split(",").map((link) => link.trim());
 };
+
+export const pagination = {
+  defaultPageSize: 100,
+  position: ["topRight", "bottomRight"],
+};

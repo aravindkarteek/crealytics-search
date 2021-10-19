@@ -17,7 +17,7 @@ const TitleWithImage = ({ text, row, isLink = false, handleProductClick }) => {
         <Button
           onClick={() => handleProductClick(row)}
           type="link"
-          className="title"
+          className="text-wrap"
         >
           {text}
         </Button>

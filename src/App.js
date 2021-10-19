@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchInput from "./components/SearchInput";
 import TableInput from "./components/TableView";
+import CardView from "./components/CardView";
 import { Typography } from "antd";
 import { csv } from "d3-fetch";
 import csvData from "./assets/products.csv";
@@ -14,10 +15,17 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [typingTimer, setTypingTimer] = useState(null);
+  const [showAdditionalImages, setShowAdditionalImages] = useState(false);
+  const [productToView, setProductToView] = useState({});
 
   useEffect(() => {
     parseData();
   }, []);
+
+  const handleProductClick = (rowData) => {
+    setShowAdditionalImages(true);
+    setProductToView({ ...rowData });
+  };
 
   const handleSearchText = (value) => {
     if (typingTimer) {
@@ -66,6 +74,14 @@ function App() {
     setProductData([...parsedData]);
   };
 
+  const viewProps = {
+    productData: !searchText ? productData : filteredData,
+    productToView,
+    showAdditionalImages,
+    setShowAdditionalImages,
+    handleProductClick,
+  };
+
   return (
     <div className="container-fluid p-5">
       <Title className="mb-5">Crealytics Search</Title>
@@ -74,7 +90,8 @@ function App() {
         handleSearchText={handleSearchText}
         filteredData={filteredData}
       />
-      <TableInput productData={!searchText ? productData : filteredData} />
+      <TableInput {...viewProps} />
+      <CardView {...viewProps} />
     </div>
   );
 }

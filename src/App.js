@@ -11,11 +11,33 @@ const { Title } = Typography;
 
 function App() {
   const [productData, setProductData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [typingTimeout, setTypingTimeout] = useState(null);
 
   useEffect(() => {
     parseData();
   }, []);
+
+  const handleSearchText = (value) => {
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
+    setSearchText(value);
+    setTypingTimeout(() =>
+      setTimeout(() => {
+        setFilteredData(() =>
+          productData.filter(({ title = "" }) => {
+            const nakedTitle = title.replace(/[^a-zA-Z]/g, "").toLowerCase();
+            const nakedSearchValue = value
+              .replace(/[^a-zA-Z]/g, "")
+              .toLowerCase();
+            return nakedTitle.includes(nakedSearchValue);
+          })
+        );
+      }, 500)
+    );
+  };
 
   const parseData = async () => {
     const parsedData = await csv(
@@ -46,8 +68,11 @@ function App() {
   return (
     <div className="container-fluid p-5">
       <Title className="mb-5">Crealytics Search</Title>
-      <SearchInput searchText={searchText} setSearchText={setSearchText} />
-      <TableInput productData={productData} />
+      <SearchInput
+        searchText={searchText}
+        handleSearchText={handleSearchText}
+      />
+      <TableInput productData={!searchText ? productData : filteredData} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Input } from "antd";
 
 const { Search } = Input;
 
-const SearchInput = ({ searchText, setSearchText }) => {
+const SearchInput = ({ searchText, handleSearchText }) => {
   return (
     <Search
       id="search-product"
@@ -12,8 +12,8 @@ const SearchInput = ({ searchText, setSearchText }) => {
       enterButton="Search product"
       allowClear
       value={searchText}
-      onChange={(e) => setSearchText(e.target.value)}
-      onPressEnter={(e) => setSearchText(e.target.value)}
+      onChange={(e) => handleSearchText(e.target.value)}
+      onPressEnter={(e) => handleSearchText(e.target.value)}
     />
   );
 };

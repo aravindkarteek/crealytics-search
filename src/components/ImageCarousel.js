@@ -14,7 +14,7 @@ const ImageCarousel = ({ additionalLinks }) => {
   };
 
   return (
-    <Carousel autoplaySpeed={1500} className="text-center" autoplay>
+    <Carousel className="text-center" autoplay>
       {getImages()}
     </Carousel>
   );

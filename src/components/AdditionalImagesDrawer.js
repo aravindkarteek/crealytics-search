@@ -4,19 +4,14 @@ import TitleWithImage from "./TitleWithImage";
 import ProductDetails from "./ProductDetails";
 import ImageCarousel from "./ImageCarousel";
 
-const AdditionalImagesDrawer = ({
-  visible,
-  onClose,
-  productDetails,
-  width,
-}) => {
+const AdditionalImagesDrawer = ({ visible, onClose, productDetails }) => {
   const { title, additionalLinks } = productDetails || {};
   return (
     <Drawer
       visible={visible}
       onClose={onClose}
-      width={width}
       title={<TitleWithImage text={title} row={productDetails} />}
+      width="100vw"
     >
       <ImageCarousel additionalLinks={additionalLinks} />
       <ProductDetails productDetails={productDetails} />

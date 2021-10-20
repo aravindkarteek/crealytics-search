@@ -14,7 +14,7 @@ const CardView = ({
   return (
     <>
       <List
-        className="mobile-view mt-5"
+        className="mobile-view my-5"
         itemLayout="horizontal"
         dataSource={productData}
         pagination={pagination}
@@ -35,7 +35,6 @@ const CardView = ({
         visible={showAdditionalImages}
         onClose={() => setShowAdditionalImages(false)}
         productDetails={productToView}
-        width="100vw"
       />
     </>
   );

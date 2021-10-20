@@ -83,7 +83,6 @@ const TableView = ({
         visible={showAdditionalImages}
         onClose={() => setShowAdditionalImages(false)}
         productDetails={productToView}
-        width="50vw"
       />
     </>
   );

@@ -1,11 +1,11 @@
-### Crealytics Search App
+## Crealytics Search App
 
 This app is intended to parse a CSV file and show the results in a table view.
 
 ## Highlights:
 
 - Currently, we have two views "Table view" for desktop devices and "Card view" for mobile devices
-- You can search any product from the list of 20k produts that you have in the products.csv of assets folder.
+- You can search any product from the list of 20k products that you have in the products.csv of assets folder.
 - You see the auto complete suggestions under the search bar.
 - All images are cached and served using service worker to provide offline mode experience.
 - Also, we are using Lazy load image component to serve the user better UI experience.
@@ -25,6 +25,6 @@ This app is intended to parse a CSV file and show the results in a table view.
 
 ### Note for Developers:
 
-- This app is bootstapped using "create-react-app" and you can always take a pull and install the dependencies using "npm install" command and start the app using "npm start"
+- This app is bootstrapped using "create-react-app" and you can always take a pull and install the dependencies using "npm install" command and start the app using "npm start"
 - It will automatically open a browser window or you can manually open "http://localhost:3001" to see the app.
 - Offline first experience is provided using default service worker and could always be enhanced or customized.

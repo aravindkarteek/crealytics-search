@@ -78,6 +78,7 @@ const TableView = ({
         columns={columns}
         dataSource={productData}
         pagination={pagination}
+        loading={!productData.length}
       />
       <AdditionalImagesDrawer
         visible={showAdditionalImages}

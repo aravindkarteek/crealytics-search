@@ -1,8 +1,9 @@
 import React from "react";
-import { List } from "antd";
+import { List, Card } from "antd";
 import TitleWithImage from "./TitleWithImage";
 import AdditionalImagesDrawer from "./AdditionalImagesDrawer";
 import { pagination } from "../utils/utils";
+import ProductDetails from "./ProductDetails";
 
 const CardView = ({
   productData,
@@ -18,15 +19,23 @@ const CardView = ({
         itemLayout="horizontal"
         dataSource={productData}
         pagination={pagination}
+        loading={!productData.length}
         renderItem={(item) => {
           return (
             <List.Item>
-              <TitleWithImage
-                text={item.title}
-                row={item}
-                isLink
-                handleProductClick={handleProductClick}
-              />
+              <Card
+                loading={!item}
+                title={
+                  <TitleWithImage
+                    text={item.title}
+                    row={item}
+                    isLink
+                    handleProductClick={handleProductClick}
+                  />
+                }
+              >
+                <ProductDetails productDetails={item} />
+              </Card>
             </List.Item>
           );
         }}

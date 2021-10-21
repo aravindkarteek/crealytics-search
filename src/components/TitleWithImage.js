@@ -4,9 +4,9 @@ import { Avatar, Button, Typography, Tag } from "antd";
 const { Title } = Typography;
 
 const TitleWithImage = ({ text, row, isLink = false, handleProductClick }) => {
-  const { imageLink, price, salePrice } = row;
+  const { imageLink, price, salePrice, gtin } = row;
   return (
-    <div className="d-flex align-items-center">
+    <div className="title-with-image d-flex align-items-center">
       <Avatar
         className="product-thumbnail"
         src={imageLink}
@@ -17,7 +17,7 @@ const TitleWithImage = ({ text, row, isLink = false, handleProductClick }) => {
         <Button
           onClick={() => handleProductClick(row)}
           type="link"
-          className="text-wrap"
+          className={`text-wrap gtin-${gtin}`}
         >
           {text}
         </Button>

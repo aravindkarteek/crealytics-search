@@ -8,6 +8,7 @@ const AdditionalImagesDrawer = ({ visible, onClose, productDetails }) => {
   const { title, additionalLinks } = productDetails || {};
   return (
     <Drawer
+      className="additional-images"
       visible={visible}
       onClose={onClose}
       title={<TitleWithImage text={title} row={productDetails} />}

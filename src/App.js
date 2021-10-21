@@ -19,6 +19,7 @@ function App() {
   const [productToView, setProductToView] = useState({});
 
   useEffect(() => {
+    // Parse products.csv from assets folder on initial render
     parseData();
   }, []);
 
@@ -28,15 +29,20 @@ function App() {
   };
 
   const handleSearchText = (value) => {
+    // Clearing debounce
     if (typingTimer) {
       clearTimeout(typingTimer);
       setTypingTimer(null);
     }
     setSearchText(value);
+    // Adding debounce
     setTypingTimer(() =>
       setTimeout(() => {
         setFilteredData(() =>
           productData.filter(({ title }) => {
+            // Logic to search
+            // First converting all titles to lower case excluding special symbols to extract naked text
+            // Performing the same with search string and matching both
             const nakedTitle = title.replace(/[^a-zA-Z]/g, "").toLowerCase();
             const nakedSearchValue = value
               .replace(/[^a-zA-Z]/g, "")
@@ -49,6 +55,7 @@ function App() {
   };
 
   const parseData = async () => {
+    // Logic to parse data and convert into object as needed
     const parsedData = await csv(
       csvData,
       ({
@@ -84,7 +91,7 @@ function App() {
 
   return (
     <div className="container-fluid p-5">
-      <Title className="mb-5">Crealytics Search</Title>
+      <Title className="search-title mb-5">Crealytics Search</Title>
       <SearchInput
         searchText={searchText}
         handleSearchText={handleSearchText}

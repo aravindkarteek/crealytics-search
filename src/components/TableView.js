@@ -75,6 +75,7 @@ const TableView = ({
     <>
       <Table
         className="desktop-view mt-5"
+        rowKey="gtin"
         columns={columns}
         dataSource={productData}
         pagination={pagination}

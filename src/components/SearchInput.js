@@ -6,19 +6,20 @@ const { Search } = Input;
 const SearchInput = ({ searchText, handleSearchText, filteredData }) => {
   const [optionsData, setOptionsData] = useState([]);
   useEffect(() => {
+    // Logic to filter unique titles to show as options for auto complete
     const uniqueTitles = new Set([...filteredData.map(({ title }) => title)]);
     setOptionsData(() => [...uniqueTitles].map((title) => ({ value: title })));
   }, [filteredData]);
   return (
     <AutoComplete
       className="auto-complete"
-      value={searchText}
       autoFocus
       options={searchText ? optionsData : []}
-      onChange={(value) => handleSearchText(value)}
     >
       <Search
         id="search-product"
+        value={searchText}
+        onKeyUp={(e) => handleSearchText(e.target.value)}
         size="large"
         enterButton="Search products"
         placeholder="Enter product title"

@@ -10,7 +10,7 @@ const ProductDetails = ({ productDetails }) => {
   const discount = (((price - salePrice) / price) * 100).toFixed(2);
 
   return (
-    <div className="p-3">
+    <div className="product-details p-3">
       <Paragraph className="d-flex justify-content-between">
         <Text strong>Gtin:</Text>
         <Text copyable className="ms-3">

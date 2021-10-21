@@ -1,44 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+### Crealytics Search App
 
-## Available Scripts
+This app is intended to parse a CSV file and show the results in a table view.
 
-In the project directory, you can run:
+## Highlights:
 
-### `npm start`
+- Currently, we have two views "Table view" for desktop devices and "Card view" for mobile devices
+- You can search any product from the list of 20k produts that you have in the products.csv of assets folder.
+- You see the auto complete suggestions under the search bar.
+- All images are cached and served using service worker to provide offline mode experience.
+- Also, we are using Lazy load image component to serve the user better UI experience.
+- UI is designed also to provide a mobile first experience while viewing product details.
+- Test cases are added and comments are provided at required places.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- You can filter the data in the table view. Available filters are listed below:
+  1. You can filter products based on "on Discount" and "No Discount" or both
+  2. You can filter products based on Gender
+  3. You can sort the products based on Price and Sale price.
+- If you want to see more details about a product, click on the product link on either table view or product view.
+- You can see more details about the product and percentage of discount on product along with images.
+- You can preview images to full screen by clicking on the image.
+- You can return to table or mobile view by pressing "Esc" button or clicking on "X" icon on the screen
 
-### `npm test`
+### Note for Developers:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- This app is bootstapped using "create-react-app" and you can always take a pull and install the dependencies using "npm install" command and start the app using "npm start"
+- It will automatically open a browser window or you can manually open "http://localhost:3001" to see the app.
+- Offline first experience is provided using default service worker and could always be enhanced or customized.
